@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.mysql.jdbc.Statement;
+
 public class ConexaoBanco {
 	public static void main(String[] args) {
 		new ConexaoBanco().processar();
@@ -70,6 +72,12 @@ public class ConexaoBanco {
 		sql.append(FECHA_PARENTESES);
 
 		System.out.println("SQL Criar tabela " + FAQ_FACULDADE_PAI + " - " + sql);
+		
+		try (Statement stmt = con.createStatement) {
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 	}
 }
