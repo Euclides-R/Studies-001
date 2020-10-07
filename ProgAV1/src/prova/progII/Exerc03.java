@@ -36,6 +36,10 @@ public class Exerc03 {
 		return "Exerc03 [NumerosINTERIOS=" + NumerosINTERIOS + ", Ninteiros=" + Ninteiros + ", descricao=" + descricao
 				+ "]";
 	}
+	
+	public Exerc03() { 
+		
+	}
 	public Exerc03(int num, int ndois, String descricao) {
 		super();
 		this.NumerosINTERIOS = num;
