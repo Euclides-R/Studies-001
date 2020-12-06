@@ -26,7 +26,7 @@ public class Exerc01 {
 		try {
 			Class.forName("org.postgresql.Driver");
 			String url = "jdbc:postgresql://localhost:5432/faculdade"; // 2
-			Connection con = DriverManager.getConnection(url, "postgres", "123456");
+			Connection con = DriverManager.getConnection(url, "postgres", "#euclidesRSTUDIES");
 			return con;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

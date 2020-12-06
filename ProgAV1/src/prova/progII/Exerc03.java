@@ -10,7 +10,7 @@ public class Exerc03 {
 	private String descricao;
 	
 	public static void main(String[] args) {
-		new Exerc03(0, 1, "Teste 1").processar();
+		new Exerc03().processar();
 	}
 	
 	public int getNumerosINTERIOS() {
@@ -48,11 +48,11 @@ public class Exerc03 {
 	}
 	
 	public void processar() {
-		Exerc03 f = new Exerc03(0, 1, "Teste 1");
+		Exerc03 f = new Exerc03(1, 1, "Teste 1");
 		insereDados(f);
-		f = new Exerc03(0, 2, "Teste 2");
+		f = new Exerc03(1, 2, "Teste 2");
 		insereDados(f);
-		f = new Exerc03(0, 3, "Teste 3");
+		f = new Exerc03(1, 3, "Teste 3");
 		insereDados(f);
 	}
 	

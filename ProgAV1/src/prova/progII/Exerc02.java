@@ -16,18 +16,27 @@ public class Exerc02 {
 			int y = 0;
 			do {
 				System.out.println("<--- CRIAR E REMOVER TABELAS --->");
-				System.out.println("<--- 1 - CRIAR TABELAS");
-				System.out.println("<--- 2 - REMOVER TABELAS");
-				System.out.println("<--- 3 - INSERIR DADOS");
+				System.out.println("<--- 1 - CRIAR UM");
+				System.out.println("<--- 2 - CRIAR DOIS");
+				System.out.println("<--- 3 - REMOVER TABELA UM");
+				System.out.println("<--- 4 - REMOVER TABELA DOIS");
 				System.out.println("<--- 9 - SAIR DO CODIGO");
 				y = input.nextInt();
 				switch (y) {
 				case 1:
-					criarTabela();
+					criarTabelaUm();
 					break;
 					
 				case 2:
-					removerTabelas();
+					criarTabelaDois();
+					break;
+				
+				case 3:
+					removerTabelasUm();
+					break;
+					
+				case 4:
+					removerTabelasDois();
 					break;
 
 				case 9:
@@ -38,7 +47,7 @@ public class Exerc02 {
 		}
 	}
 	
-	public Object criarTabela() {
+	public Object criarTabelaUm() {
 		Exerc01 mConexao = new Exerc01();
 		try (Connection con = mConexao.conectarBanco();) {
 			StringBuilder sql = new StringBuilder();
@@ -46,15 +55,53 @@ public class Exerc02 {
 			sql.append(" FAQ_FACULDADE_PAI");
 			sql.append("( ");
 
+			sql.append("ID_DETALHE_PAI");
+			sql.append(" INT NOT NULL");
+			sql.append(", ");
+
+			sql.append("DESC_ITEM");
+			sql.append(" INT NOT NULL");
+			sql.append(",");
+
+			sql.append("PRIMARY KEY");
+			sql.append("(");
+			sql.append("ID_DETALHE_PAI");
+			sql.append(")");
+			sql.append(")");
+
+			System.out.println("SQL Criar tabela " + "FAQ_FACULDADE_PAI" + " - " + sql);
+
+			try (Statement stmt = con.createStatement();) {
+				int r = stmt.executeUpdate(sql.toString());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return null;
+	}
+	
+	public Object criarTabelaDois() {
+		Exerc01 mConexao = new Exerc01();
+		try (Connection con = mConexao.conectarBanco();) {
+			StringBuilder sql = new StringBuilder();
+			sql.append(" CREATE TABLE IF NOT EXISTS ");
+			sql.append(" FAQ_FACULDADE_DETALHE");
+			sql.append("( ");
+
 			sql.append("ID_PAI");
 			sql.append(" INT NOT NULL");
 			sql.append(", ");
 
-			sql.append("ID_DETALHE");
+			sql.append(" ID_DETALHE_PAI");
 			sql.append(" INT NOT NULL");
 			sql.append(",");
 			
 			sql.append(" DESC_ITEM");
+			sql.append(" TEXT NOT NULL");
+			sql.append(",");
+			sql.append(" DESC_CONTEUDO_ALUNO");
 			sql.append(" TEXT NOT NULL");
 			sql.append(",");
 
@@ -77,22 +124,41 @@ public class Exerc02 {
 		return null;
 	}
 	 // Exerc�cio 02.1
-	public void removerTabelas() {
+	public void removerTabelasUm() {
 		Exerc01 MC = new Exerc01();
-		try (Connection con = MC.conectarBanco();) {
-			StringBuilder sql = new StringBuilder();
-			sql.append(" DROP TABLE ");
-			sql.append("FAQ_FACULDADE_PAI");
-
-			System.out.println("SQL remover tabela " + " FAQ_FACULDADE_PAI " + " - " + sql);
-
-			try (Statement stmt = con.createStatement();) {
-				int r = stmt.executeUpdate(sql.toString());
-			} catch (SQLException e) {
-				e.printStackTrace();
+			try (Connection con = MC.conectarBanco();) {
+				StringBuilder sql = new StringBuilder();
+				sql.append(" DROP TABLE ");
+				sql.append("FAQ_FACULDADE_PAI");
+	
+				System.out.println("SQL remover tabela " + " FAQ_FACULDADE_PAI " + " - " + sql);
+	
+				try (Statement stmt = con.createStatement();) {
+					int r = stmt.executeUpdate(sql.toString());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} catch (SQLException e1) {
+				e1.printStackTrace();
 			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+	}
+	
+	public void removerTabelasDois() {
+		Exerc01 MC = new Exerc01();
+			try (Connection con = MC.conectarBanco();) {
+				StringBuilder sql = new StringBuilder();
+				sql.append(" DROP TABLE ");
+				sql.append(" FAQ_FACULDADE_DETALHE");
+	
+				System.out.println("SQL remover tabela " + "FAQ_FACULDADE_DETALHE" + " - " + sql);
+	
+				try (Statement stmt = con.createStatement();) {
+					int r = stmt.executeUpdate(sql.toString());
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 	}
 }

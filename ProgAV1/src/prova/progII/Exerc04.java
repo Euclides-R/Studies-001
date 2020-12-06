@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Exerc04 {
 	public static void main(String[] args) {
@@ -17,9 +18,8 @@ public class Exerc04 {
 			System.out.println(faq);
 
 		}
-		System.out.println("\n\n");
 		Exerc03 item = selecionarITEM(1);
-		System.out.println(item);
+		JOptionPane.showMessageDialog(null, item);
 	}
 	
 	private Exerc03 selecionarITEM(int i) {
@@ -62,11 +62,10 @@ public class Exerc04 {
 	public List<Exerc03> puxarTodosItens() {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT");
-		sql.append(" ID_PAI");
+		sql.append(" ID_DETALHE_PAI");
 		sql.append(", ");
 		sql.append(" ID_DETALHE");
 		sql.append(", ");
-		sql.append(" DESC_ITEM");
 		sql.append(" FROM");
 		sql.append(" FAQ_FACULDADE_PAI");
 		System.out.println("Comando select: " + sql);
