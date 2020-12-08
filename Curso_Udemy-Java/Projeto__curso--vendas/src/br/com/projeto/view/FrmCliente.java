@@ -7,6 +7,8 @@ package br.com.projeto.view;
 
 import br.com.projeto.dao.ClientesDAO;
 import br.com.projeto.model.Clientes;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +19,34 @@ public class FrmCliente extends javax.swing.JFrame {
     /**
      * Creates new form FrmCliente
      */
+    public void listar() {
+        
+        ClientesDAO dao = new ClientesDAO();
+        List<Clientes> lista = dao.listarClientes();
+        DefaultTableModel dados = (DefaultTableModel) tabelaClientes.getModel();
+        dados.setNumRows(0);
+        
+        for(Clientes c: lista) {
+            dados.addRow(new Object[]{
+               c.getId_código(),
+               c.getNome(),
+               c.getRg(),
+               c.getCpf(),
+               c.getEmail(),
+               c.getTelefone(),
+               c.getCelular(),
+               c.getCep(),
+               c.getEndereco(),
+               c.getNumero(),
+               c.getComplemento(),
+               c.getBairro(),
+               c.getCidade(),
+               c.getEstado()
+            });
+        }
+        
+    }    
+    
     public FrmCliente() {
         initComponents();
     }
@@ -66,7 +96,7 @@ public class FrmCliente extends javax.swing.JFrame {
         btnpesquisar = new javax.swing.JButton();
         txtnomepesquisa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
+        tabelaClientes = new javax.swing.JTable();
         btnnew = new javax.swing.JButton();
         btnsave = new javax.swing.JButton();
         btnedit = new javax.swing.JButton();
@@ -75,6 +105,11 @@ public class FrmCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -314,13 +349,13 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel8)
                                 .addComponent(txtcell, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel9)
-                                .addComponent(txttelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txttelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
@@ -369,10 +404,10 @@ public class FrmCliente extends javax.swing.JFrame {
         txtnomepesquisa.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtnomepesquisa.setText("Nome completo");
 
-        tabela.setBackground(new java.awt.Color(255, 255, 255));
-        tabela.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        tabela.setForeground(new java.awt.Color(0, 0, 0));
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaClientes.setBackground(new java.awt.Color(255, 255, 255));
+        tabelaClientes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tabelaClientes.setForeground(new java.awt.Color(0, 0, 0));
+        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -380,7 +415,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 "Id", "Nome", "RG", "CPF", "Email", "Telefone", "Celular", "CEP", "Endereço", "Complemento", "Bairro", "Cidade", "Estado"
             }
         ));
-        jScrollPane1.setViewportView(tabela);
+        jScrollPane1.setViewportView(tabelaClientes);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -477,7 +512,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 86, 970, 420));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 86, 970, 440));
 
         jPanel5.setBackground(new java.awt.Color(0, 102, 102));
         jPanel5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
@@ -539,6 +574,12 @@ public class FrmCliente extends javax.swing.JFrame {
     private void txtcellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcellActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcellActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // Carrega a lista
+        
+        listar();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -604,7 +645,7 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tabela;
+    private javax.swing.JTable tabelaClientes;
     private javax.swing.JTextField txtbairro;
     private javax.swing.JFormattedTextField txtcell;
     private javax.swing.JFormattedTextField txtcep;

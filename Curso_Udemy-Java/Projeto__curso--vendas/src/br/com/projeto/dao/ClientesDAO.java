@@ -16,10 +16,10 @@ import javax.swing.JOptionPane;
  */
 public class ClientesDAO {
     
-    private Connection con;
+    private final Connection con;
     
     public ClientesDAO(){
-        this.con = new ConnectionFactory().getConnection();
+        this.con = ConnectionFactory.getConnection();
     }
     
     // Métodos para CadastrarCliente
@@ -30,25 +30,25 @@ public class ClientesDAO {
                     + "cep, endereco, numero, complemento, bairro, cidade, estado)"
                     + " values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
             
-            // 2 - Comando de comunicação para inserir os dados
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, objClientes.getNome());
-            stmt.setString(2, objClientes.getRg());
-            stmt.setString(3, objClientes.getCpf());
-            stmt.setString(4, objClientes.getEmail());
-            stmt.setString(5, objClientes.getTelefone());
-            stmt.setString(6, objClientes.getCelular());
-            stmt.setString(7, objClientes.getCep());
-            stmt.setString(8, objClientes.getEndereco());
-            stmt.setInt(9, objClientes.getNumero());
-            stmt.setString(10, objClientes.getComplemento());
-            stmt.setString(11, objClientes.getBairro());
-            stmt.setString(12, objClientes.getCidade());
-            stmt.setString(13, objClientes.getEstado());
-            
-            // 3 - Executando e encerrando o comando
-            stmt.execute();
-            stmt.close();
+            try ( // 2 - Comando de comunicação para inserir os dados
+                PreparedStatement stmt = con.prepareStatement(sql)) {
+                stmt.setString(1, objClientes.getNome());
+                stmt.setString(2, objClientes.getRg());
+                stmt.setString(3, objClientes.getCpf());
+                stmt.setString(4, objClientes.getEmail());
+                stmt.setString(5, objClientes.getTelefone());
+                stmt.setString(6, objClientes.getCelular());
+                stmt.setString(7, objClientes.getCep());
+                stmt.setString(8, objClientes.getEndereco());
+                stmt.setInt(9, objClientes.getNumero());
+                stmt.setString(10, objClientes.getComplemento());
+                stmt.setString(11, objClientes.getBairro());
+                stmt.setString(12, objClientes.getCidade());
+                stmt.setString(13, objClientes.getEstado());
+                
+                // 3 - Executando e encerrando o comando
+                stmt.execute();
+            }
             
             JOptionPane.showMessageDialog(null, "Cadastrado com Sucesso!");
             
@@ -72,14 +72,15 @@ public class ClientesDAO {
             List<Clientes> lista = new ArrayList<>();
             
             // 2 - Comando sql
-            String sql = "SELECT * FROM tb_clientes";
-            PreparedStatement stmt = new con.PreparedStatement(sql);
-            ResultSet rs = stmt.executeQuery();
+            String comand = "SELECT * FROM tb_clientes";
+            PreparedStatement mt;
+            mt = con.prepareStatement(comand);
+            ResultSet rs = mt.executeQuery();
             
             while (rs.next()) {
                 Clientes obj = new Clientes();
                 
-                obj.setId_código(rs.getInt("i"));
+                obj.setId_código(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
                 obj.setRg(rs.getString("rg"));
                 obj.setCpf(rs.getString("cpf"));
@@ -95,12 +96,9 @@ public class ClientesDAO {
                 obj.setEstado(rs.getString("estado"));
                 
                 lista.add(obj);
-               
             }
            return lista; 
-            
         } catch (SQLException e) {
-            
             JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
         return null;
