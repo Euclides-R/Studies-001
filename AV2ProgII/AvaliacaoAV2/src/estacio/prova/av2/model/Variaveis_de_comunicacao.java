@@ -59,7 +59,4 @@ public class Variaveis_de_comunicacao {
     public String toString() {
         return "Variaveis_de_comunicacao{" + "id_agencia=" + id_agencia + ", id_conta=" + id_conta + ", nasc=" + nasc + ", saldo_real=" + saldo_real + '}';
     }
-
-   
-    
 }

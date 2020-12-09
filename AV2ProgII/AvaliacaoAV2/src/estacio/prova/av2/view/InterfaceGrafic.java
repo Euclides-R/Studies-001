@@ -7,11 +7,12 @@ package estacio.prova.av2.view;
 
 import estacio.prova.av2.dao.ComandosSQL;
 import estacio.prova.av2.model.Variaveis_de_comunicacao;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author eucli
+ * @author Euclides Rodrigues Junior
  */
 public class InterfaceGrafic extends javax.swing.JFrame {
 
@@ -217,17 +218,20 @@ public class InterfaceGrafic extends javax.swing.JFrame {
         // Botão cadastrar
         Variaveis_de_comunicacao com = new Variaveis_de_comunicacao();
 
-        com.setId_agencia(Integer.parseInt(txtagencia.getText()));
-        com.setId_conta(Integer.parseInt(txtconta.getText()));
-        com.setNasc(Integer.parseInt(txtnasc.getText()));
-        com.setSaldo_real(Float.parseFloat(txtsaldo.getText()));
-
-        if ((txtagencia.getText() == null) && (txtconta.getText() == null) && (txtnasc.getText() == null) && (txtsaldo.getText() == null)) {
-            JOptionPane.showMessageDialog(null, "Os campos não foram preenchidos");
-        } else {
-            ComandosSQL bd = new ComandosSQL();
-            bd.cadastrarCliente(com);
-            JOptionPane.showMessageDialog(null, "Cadastro Realizado");
+        try {
+            com.setId_agencia(Integer.parseInt(txtagencia.getText()));
+            com.setId_conta(Integer.parseInt(txtconta.getText()));
+            com.setNasc(Integer.parseInt(txtnasc.getText()));
+            com.setSaldo_real(Float.parseFloat(txtsaldo.getText()));
+            if (txtagencia.getText() == null || txtconta.getText() == null || txtnasc == null || txtsaldo.getText() == null) {
+                JOptionPane.showMessageDialog(null, "Todos os campos não foram preenchidos");
+            } else {
+                ComandosSQL bd = new ComandosSQL();
+                bd.cadastrarCliente(com);
+                JOptionPane.showMessageDialog(null, "Cadastro Realizado");
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Os campos não são números" + e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
