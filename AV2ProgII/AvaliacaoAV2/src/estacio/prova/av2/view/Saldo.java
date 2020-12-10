@@ -6,12 +6,7 @@
 package estacio.prova.av2.view;
 
 import estacio.prova.av2.dao.ComandosSQL;
-import estacio.prova.av2.model.Variaveis_de_comunicacao;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,15 +17,15 @@ public class Saldo extends javax.swing.JFrame {
 
     /**
      * Creates new form Saldo
+     *
      * @param cont
      * @throws java.sql.SQLException
      */
-    
     public void mostrarSaldo(int cont) throws SQLException {
         ComandosSQL chamar = new ComandosSQL();
         chamar.mostrarSaldo(cont);
     }
-    
+
     public Saldo() {
         initComponents();
     }
@@ -164,12 +159,17 @@ public class Saldo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Ver Saldo bottton
-        Saldo chamar = new Saldo();
+        ComandosSQL chamar = new ComandosSQL();
         try {
             chamar.mostrarSaldo(Integer.parseInt(txtconta.getText()));
-        } catch (SQLException ex) {
-            Logger.getLogger(Saldo.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e);
         }
+        
+        Valorsaldo frm = new Valorsaldo();
+        frm.Dados(Integer.parseInt(txtconta.getText()));
+        frm.setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

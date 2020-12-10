@@ -5,6 +5,11 @@
  */
 package estacio.prova.av2.view;
 
+import estacio.prova.av2.dao.ComandosSQL;
+import estacio.prova.av2.model.Variaveis_de_comunicacao;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author eucli
@@ -18,8 +23,18 @@ public class Valorsaldo extends javax.swing.JFrame {
     
    
     public void Dados(int contsql) {
+        ComandosSQL get = new ComandosSQL();
+        List<Variaveis_de_comunicacao> list = get.mostrarSaldo(contsql);
+        DefaultTableModel dados = (DefaultTableModel) Tabelasaldo.getModel();
         
-}
+        for(Variaveis_de_comunicacao c: list) {
+            dados.addRow(new Object[]{
+                c.getId_agencia(),
+                c.getId_conta(),
+                c.getSaldo_real()
+            });
+        }
+    }
     
     public Valorsaldo() {
         initComponents();
@@ -34,21 +49,50 @@ public class Valorsaldo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabelasaldo = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+
+        Tabelasaldo.setBackground(new java.awt.Color(255, 255, 255));
+        Tabelasaldo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Agência", "Conta", "Saldo"
+            }
+        ));
+        jScrollPane1.setViewportView(Tabelasaldo);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 95, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+       
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -86,5 +130,7 @@ public class Valorsaldo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabelasaldo;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

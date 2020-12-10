@@ -22,7 +22,7 @@ public class ConnectionBD {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
     private static final String URL = "jdbc:mysql://localhost:3306/avaliacao2";
     private static final String USER = "root";
-    private static final String PASS = "123456";
+    private static final String PASS = "#euclidesRSTUDIES";
 
     public static Connection getConnection() {
         try {
