@@ -7,11 +7,19 @@ package estacio.prova.av2.model;
  */
 public class Variaveis_de_comunicacao {
     // nome do cliente, id da agencia, id da conta corrente, data do aniversário e saldo atualizado. 
-    
+    private String nome;
     private int id_agencia;
     private int id_conta;
     private int nasc;
     private double saldo_real;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public int getId_agencia() {
         return id_agencia;
@@ -55,8 +63,4 @@ public class Variaveis_de_comunicacao {
     public Variaveis_de_comunicacao() {
     }
 
-    @Override
-    public String toString() {
-        return "Variaveis_de_comunicacao{" + "id_agencia=" + id_agencia + ", id_conta=" + id_conta + ", nasc=" + nasc + ", saldo_real=" + saldo_real + '}';
-    }
 }

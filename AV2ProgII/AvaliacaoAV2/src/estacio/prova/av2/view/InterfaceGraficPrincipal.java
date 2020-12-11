@@ -5,6 +5,8 @@
  */
 package estacio.prova.av2.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author eucli
@@ -16,6 +18,10 @@ public class InterfaceGraficPrincipal extends javax.swing.JFrame {
      */
     public InterfaceGraficPrincipal() {
         initComponents();
+    }
+    
+    public void Aluno() {
+        JOptionPane.showMessageDialog(null, "EUCLIDES RODRIGUES JUNIOR Nº = 201902501691");
     }
 
     /**
@@ -31,6 +37,7 @@ public class InterfaceGraficPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btncadastrar = new javax.swing.JButton();
         btnconsultarsaldo = new javax.swing.JButton();
+        btnsair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(713, 410));
@@ -78,20 +85,33 @@ public class InterfaceGraficPrincipal extends javax.swing.JFrame {
                 .addGap(78, 78, 78))
         );
 
+        btnsair.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnsair.setForeground(new java.awt.Color(0, 0, 0));
+        btnsair.setText("SAIR");
+        btnsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(224, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(214, 214, 214))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnsair, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(138, 138, 138))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnsair)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
 
@@ -116,6 +136,7 @@ public class InterfaceGraficPrincipal extends javax.swing.JFrame {
         InterfaceGrafic frame = new InterfaceGrafic();
 
         frame.setVisible(true);
+        Aluno();
     }//GEN-LAST:event_btncadastrarActionPerformed
 
     private void btnconsultarsaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarsaldoActionPerformed
@@ -123,7 +144,13 @@ public class InterfaceGraficPrincipal extends javax.swing.JFrame {
         Saldo frame = new Saldo();
 
         frame.setVisible(true);
+        Aluno();
     }//GEN-LAST:event_btnconsultarsaldoActionPerformed
+
+    private void btnsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btnsairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +190,7 @@ public class InterfaceGraficPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncadastrar;
     private javax.swing.JButton btnconsultarsaldo;
+    private javax.swing.JButton btnsair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

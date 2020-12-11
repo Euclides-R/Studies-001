@@ -5,6 +5,10 @@
  */
 package estacio.prova.av2.view;
 
+import estacio.prova.av2.dao.ComandosSQL;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author eucli
@@ -30,11 +34,11 @@ public class Vizualizar extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtsaque = new javax.swing.JButton();
-        txtsaque1 = new javax.swing.JButton();
+        txtsair = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        txtsaque2 = new javax.swing.JButton();
+        txtidconta = new javax.swing.JTextField();
+        txtvalor = new javax.swing.JTextField();
+        txtdepositar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -49,16 +53,31 @@ public class Vizualizar extends javax.swing.JFrame {
         jPanel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         txtsaque.setText("Fazer Saque");
+        txtsaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsaqueActionPerformed(evt);
+            }
+        });
 
-        txtsaque1.setText("Sair");
+        txtsair.setText("Sair");
+        txtsair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsairActionPerformed(evt);
+            }
+        });
 
         jTextField1.setText("Número da Agência...");
 
-        jTextField2.setText("Número da Conta...");
+        txtidconta.setText("Número da Conta...");
 
-        jTextField3.setText("Valor...");
+        txtvalor.setText("Valor...");
 
-        txtsaque2.setText("Depoistar");
+        txtdepositar.setText("Depoistar");
+        txtdepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdepositarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -81,20 +100,20 @@ public class Vizualizar extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtidconta, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField1))
                         .addGap(26, 26, 26))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtsaque1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsair, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtsaque, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtsaque2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48))
         );
         jPanel2Layout.setVerticalGroup(
@@ -109,18 +128,18 @@ public class Vizualizar extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtsaque2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtdepositar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtidconta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtsaque1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtvalor, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtsair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50))
         );
 
@@ -157,6 +176,31 @@ public class Vizualizar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtsaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsaqueActionPerformed
+        // Botão sacar
+        ComandosSQL sql = new ComandosSQL();
+        try {
+            sql.sacarSaldo(Integer.parseInt(txtidconta.getText()), Float.parseFloat(txtvalor.getText()));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro" + ex);
+        }
+    }//GEN-LAST:event_txtsaqueActionPerformed
+
+    private void txtdepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdepositarActionPerformed
+        // Botão depositar
+        ComandosSQL sql = new ComandosSQL();
+        try {
+            sql.depositarSaldo(Integer.parseInt(txtidconta.getText()), Float.parseFloat(txtvalor.getText()));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro" + ex);
+        }
+    }//GEN-LAST:event_txtdepositarActionPerformed
+
+    private void txtsairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsairActionPerformed
+        // Botão sair
+        System.exit(0);
+    }//GEN-LAST:event_txtsairActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,7 +231,7 @@ public class Vizualizar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Saldo().setVisible(true);
+                new Vizualizar().setVisible(true);
             }
         });
     }
@@ -199,10 +243,10 @@ public class Vizualizar extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton txtdepositar;
+    private javax.swing.JTextField txtidconta;
+    private javax.swing.JButton txtsair;
     private javax.swing.JButton txtsaque;
-    private javax.swing.JButton txtsaque1;
-    private javax.swing.JButton txtsaque2;
+    private javax.swing.JTextField txtvalor;
     // End of variables declaration//GEN-END:variables
 }

@@ -90,14 +90,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField2" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtidconta" alignment="1" max="32767" attributes="0"/>
                                   <Component id="jTextField1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField3" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="txtvalor" min="-2" pref="254" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -106,9 +106,9 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="txtsaque1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="txtsair" min="-2" pref="100" max="-2" attributes="0"/>
                           <Component id="txtsaque" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="txtsaque2" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="txtdepositar" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
@@ -128,11 +128,11 @@
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="txtsaque2" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtdepositar" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField2" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="txtidconta" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="9" max="32767" attributes="0"/>
@@ -140,9 +140,9 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField3" min="-2" pref="35" max="-2" attributes="0"/>
+                              <Component id="txtvalor" min="-2" pref="35" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtsaque1" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="txtsair" alignment="1" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
@@ -154,31 +154,40 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Fazer Saque"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtsaqueActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="txtsaque1">
+            <Component class="javax.swing.JButton" name="txtsair">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtsairActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextField1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N&#xfa;mero da Ag&#xea;ncia..."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="txtidconta">
               <Properties>
                 <Property name="text" type="java.lang.String" value="N&#xfa;mero da Conta..."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="txtvalor">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Valor..."/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="txtsaque2">
+            <Component class="javax.swing.JButton" name="txtdepositar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Depoistar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtdepositarActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
