@@ -1,0 +1,113 @@
+/* Comandos globais */
+* {
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  border: 1px solid red;
+  width: 100vw;
+  margin: 0;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Menu */
+.top__site {
+  background-color: rgb(0, 0, 0);
+  position: relative;
+  width: auto;
+  height: 70px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+}
+
+.top__site img {
+  width: 50px;
+  position: absolute;
+  top: 10px;
+  left: 70px;
+}
+
+.top__site h3 {
+  font-weight: lighter;
+  color: white;
+  position: absolute;
+  top: 5px;
+  left: 125px;
+}
+
+.login__input {
+  margin-top: 10px;
+  text-align: center;
+  font-family: "Lucida Handwriting", sans-serif;
+  width: 12rem;
+  height: 2rem;
+  border-radius: 10rem;
+  margin-right: 1rem;
+  color: inherit;
+  border: 1px solid #fff;
+  transition: all 0.3s;
+}
+
+.login__input--user {
+  position: absolute;
+  top: 10px;
+  right: 15rem;
+}
+
+.login__input--password {
+  position: absolute;
+  top: 10px;
+  right: 2.2rem;
+}
+
+.login__btn {
+  border: none;
+  margin-top: 13px;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/* Corpo */
+.corpo {
+  line-height: 1.5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.corpo__welcome {
+  border: 1px solid red;
+  width: 70%;
+  min-height: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nerd {
+  margin: 35px;
+  margin: 30px;
+  padding: 25px;
+}
+
+.corpo__welcome--info {
+  width: 50%;
+  text-align: center;
+}
+
+.corpo__welcome--info p {
+  text-align: justify;
+}
