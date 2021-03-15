@@ -86,6 +86,7 @@ body {
 }
 
 .menu__link {
+  border: 1px solid red;
   max-width: 350px;
   height: 2em;
   max-height: 2.7em;
@@ -106,14 +107,14 @@ body {
 }
 
 .menu__link--pageApp {
+  border: 1px solid red;
   text-decoration: none;
   color: #2c2c51;
-  padding: 0.25em;''
+  padding: 0.25em;
 }
 
 .menu__link--pageApp:hover {
   transition: 0.3s;
-  font-size: 17px;
   color: #fdba12;
 }
 
@@ -134,7 +135,7 @@ body {
 
 .menu__user:hover {
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 16px;
   color: #fdba12;
   border: 1px solid #fdba12;
 }
@@ -143,6 +144,7 @@ body {
 
 .corpo__apresentation {
   border: 1px solid gold;
+  width: 1920px;
   max-width: 70%;
   display: flex;
   flex-direction: column;
@@ -160,14 +162,15 @@ body {
   color: #2c2c51;
   clear: both;
   position: relative;
+  align-items: center;
 }
 
 .corpo__alinhamento {
+  padding-left: 100px;
   float: left;
 }
 
 .corpo__welcome img {
-  max-width: 500px;
 }
 
 .corpo__welcome--text {
@@ -195,6 +198,8 @@ body {
 }
 
 .corpo__welcome h4 {
+  border: 1px solid red;
+  max-width: 90%;
   font-size: 30px;
   font-weight: lighter;
   color: #171617;
