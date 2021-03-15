@@ -19,8 +19,7 @@
 }
 
 body {
-  margin: 0;
-  border: 1px solid green;
+  margin: auto;
   height: auto;
   background-color: #f5f7fb;
   font-family: 'Roboto', sans-serif;
@@ -28,33 +27,70 @@ body {
   max-width: 1920px;
   min-width: 1024px;
   color: #2c2c51;
+  z-index: 1;
+}
+
+/* animation div's */
+
+@-webkit-keyframes animta__box--down {
+  0% {
+    transform: translatey(50px) translatez(50px);
+  }
+  50% {
+    transform: translatey(20px) translatez(20px);
+  }
+  100% {
+    transform: translatey(0px) translatez(0px);
+  }
+}
+
+@-webkit-keyframes animate-div {
+  from {
+    opacity: 0;
+    margin-top: -150px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+
+@-webkit-keyframes animate_img {
+  from {
+    opacity: 0;
+    margin-left: -250px;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
 }
 
 /* Menu superior */
 
 .corpo {
-  border: 1px solid red;
   margin: auto;
-  max-width: 1920px;
-  min-width: 1024px;
+  max-width: 1360px;
+  min-width: 768px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  -webkit-animation: animate-div 3s;
+  z-index: 5;
 }
 
 .menu {
-  border: 1px solid purple;
   display: flex;
   flex-direction: column;
-  width: 70%;
-  max-width: 85%;
+  width: 100%;
+  max-width: 100%;
   min-width: 50%;
   position: relative;
 }
 
 .logo {
   width: auto;
-  max-width: 6.3em;
+  max-width: 6em;
   text-align: center;
   font-size: 20px;
   margin-top: 15px;
@@ -86,7 +122,6 @@ body {
 }
 
 .menu__link {
-  border: 1px solid red;
   max-width: 350px;
   height: 2em;
   max-height: 2.7em;
@@ -107,13 +142,13 @@ body {
 }
 
 .menu__link--pageApp {
-  border: 1px solid red;
   text-decoration: none;
   color: #2c2c51;
   padding: 0.25em;
 }
 
 .menu__link--pageApp:hover {
+  font-weight: bold;
   transition: 0.3s;
   color: #fdba12;
 }
@@ -135,6 +170,7 @@ body {
 
 .menu__user:hover {
   transition: 0.3s;
+  font-weight: bold;
   font-size: 16px;
   color: #fdba12;
   border: 1px solid #fdba12;
@@ -143,9 +179,9 @@ body {
 /* Corpo Welcome */
 
 .corpo__apresentation {
-  border: 1px solid gold;
-  width: 1920px;
-  max-width: 70%;
+  border: 2px solid purple;
+  width: 1360px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -153,83 +189,119 @@ body {
   position: relative;
 }
 
-.corpo__welcome {
-  width: 100%;
-  height: 100%;
-  max-width: 1920px;
-  max-height: 1080px;
-  border: 1px solid black;
+.corpo__principal {
+  border: 1px solid red;
+  max-width: 100%;
+  max-height: 100%;
   color: #2c2c51;
   clear: both;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.corpo__alinhamento {
-  padding-left: 100px;
-  float: left;
+.img__welcome {
+  width: 1080px;
+  max-width: 60%;
+  min-width: 350px;
+  margin: 0;
+  -webkit-animation: animate_img 3s;
 }
 
-.corpo__welcome img {
+.corpo__principal--up {
+  padding-top: 5vw;
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.corpo__welcome--text {
+.corpo__principal--text {
   margin-top: 50px;
   margin-left: 35px;
-  max-width: 400px;
-  text-align: center;
-  border: 1px solid red;
-  font-size: 17px;
-  padding: 5px;
+  max-width: 30.8em;
+  min-width: 20em;
+  text-align: left;
 }
 
-.corpo__welcome--text h3 {
+.corpo__principal--text h3 {
+  max-width: 90%;
+  min-width: 60%;
   color: #171617;
-  text-align: center;
+  text-align: left;
   font-size: 28px;
-  font-weight: 300;
+  font-weight: 400;
   padding-bottom: 1em;
 }
 
-.corpo__welcome--text p {
-  color: #939393;
-  font-weight: lighter;
-  text-align: justify;
+.corpo__principal--text h3 {
+  font-size: 2vw;
 }
 
-.corpo__welcome h4 {
-  border: 1px solid red;
-  max-width: 90%;
-  font-size: 30px;
-  font-weight: lighter;
-  color: #171617;
+.corpo__principal--text p {
+  max-height: 10.5em;
+  color: #939393;
+  font-weight: 385;
+  line-height: 1.5em;
+  text-align: justify;
+  font-size: 1vw;
 }
 
 .link__information {
   margin: auto;
   background: black;
   padding: 10px;
+  text-align: center;
   width: 85%;
+  height: 3em;
+  max-height: 3.3em;
+  max-width: 90%;
+  min-width: 30%;
   text-decoration: none;
   color: white;
-  text-align: center;
-  border-radius: 15px;
+  border-radius: 10px;
+  display: flex;
+  font-size: 1vw;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 3px 4px 5px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 3px 4px 5px rgba(50, 50, 50, 0.77);
+  box-shadow: 3px 4px 5px rgba(50, 50, 50, 0.77);
 }
 
 .link__information a {
+  max-width: 90%;
+  min-width: 60%;
   text-decoration: none;
   color: #f5f7fb;
+  font-size: 14px;
 }
 
 /* Login page */
 
+.div__login {
+  max-width: 95%;
+  min-width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .cad__div {
   border: 1px solid #939393;
   border-radius: 5px;
-  margin-top: 20px;
-  margin-left: 25px;
-  width: 150px;
+  margin: 25px;
+  width: 35%;
   height: 35px;
+  min-height: 10px;
+  max-width: 35%;
+  min-width: 15%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -240,10 +312,177 @@ body {
 .cad__div a {
   text-decoration: none;
   color: #939393;
-  font-size: 14px;
+  font-size: 1vw;
 }
+
+.cad__div a:hover {
+  font-weight: bold;
+}
+
+/* Texto inferior */
+
+.corpo__principal--downtext {
+  padding: 30px;
+  color: #171617;
+  font-size: 1.4vw;
+  font-weight: 350;
+  width: 800px;
+  max-width: 65%;
+}
+
+.corpo__principal--downtext a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #171617;
+}
+
+/* CSS Details */
+
+.corpo__principal--details {
+  float: left;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  -webkit-animation: animate-div 3s;
+}
+
+.details__width {
+  max-width: 50%;
+  max-height: 50%;
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text__up--details {
+  color: #939393;
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 35vw;
+  text-align: justify;
+  padding: 10px;
+}
+
+.text__up--details p {
+  font-size: 1vw;
+}
+
+/* Tables */
+
+.options {
+  margin-top: 20px;
+}
+
+.options tr {
+  display: flex;
+  max-width: 300px;
+  height: 50px;
+}
+
+.options th {
+  color: #f5f7fb;
+  font-weight: 350;
+  background: #939393;
+  border-radius: 5px;
+  display: flex;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  width: 4em;
+  height: 3.3em;
+  max-width: 100%;
+  max-height: 45px;
+  margin: 5px;
+  font-size: 0.8vw;
+}
+
+.options th:hover {
+  background: green;
+}
+
+/* Footer Details */
+
+.div__home {
+  border-radius: 10px;
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  background: #171617;
+  color: #f5f7fb;
+  width: 300px;
+  height: 40px;
+  max-width: 30%;
+  max-height: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-box-shadow: 3px 4px 5px rgba(50, 50, 50, 0.77);
+  -moz-box-shadow: 3px 4px 5px rgba(50, 50, 50, 0.77);
+  box-shadow: 3px 4px 5px rgba(50, 50, 50, 0.77);
+}
+
+.div__home a {
+  color: #f5f7fb;
+  text-decoration: none;
+}
+
+/* Download APP */
+
+.back_up {
+  position: fixed;
+  right: 0;
+  background-color: #171617;
+  width: 100%;
+  height: 100%;
+  max-width: 40%;
+  max-height: 40%;
+  border-radius: 0px 0px 0px 250px;
+  z-index: 0;
+}
+
+.back_down {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #171617;
+  width: 100%;
+  height: 100%;
+  max-width: 40%;
+  max-height: 40%;
+  border-radius: 0px 250px 0px 0px;
+  z-index: 0;
+  -webkit-animation: animta__box--down 3s;
+}
+
+.corpo__principal--down {
+  border: 1px solid red;
+  max-width: 100%;
+  max-height: 100%;
+  color: #2c2c51;
+  clear: both;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.div__pink--1 {
+  background-color: #fe388a;
+  width: 100%;
+  height: 100%;
+  max-width: 450px;
+  height: 175px;
+  border-radius: 10px 0px 10px 0px;
+  font-size: 2vw;
+}
+
 /* 
 COR TEMA = FDBA12 
 BACKGROUND = F5F7FB
 LETRAS = F5F5F5
-*/ ;
+*/
